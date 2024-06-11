@@ -8,8 +8,8 @@ function sumWithReduce(numbers) {
     return numbers.reduce((acc, number) => acc + number, 0);
 }
 
-const result = sumWithReduce(numbers);
-console.log(result); // Ausgabe: 15
+const result1 = sumWithReduce(numbers);
+console.log(result1); // Ausgabe: 15
 
 /**
  * Gegeben ist eine Liste von Strings: List("Hallo", " ", "Welt", "!"). Kombinieren Sie alle Strings zu einem einzigen String mithilfe von foldLeft.
@@ -21,8 +21,8 @@ function combineStringsWithReduce(strings) {
     return strings.reduce((acc, str) => acc + str, "");
 }
 
-const result = combineStringsWithReduce(strings);
-console.log(result); // Ausgabe: "Hallo Welt!"
+const result2 = combineStringsWithReduce(strings);
+console.log(result2); // Ausgabe: "Hallo Welt!"
 
 /**
  * Gegeben ist eine Liste von Punkten in einem zweidimensionalen Raum.
