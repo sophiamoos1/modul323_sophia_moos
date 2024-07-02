@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5a2c66bd-cd37-4ddd-8f04-7e1513b5dc95" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/Task1.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task1/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/Task2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task2/src/ShoppingCart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/Task3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 1/Task3/src/TipCalculator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/CarRace.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/Task1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/Task1/src/Destination.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/Task1/src/Dokumentation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/Task1/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/Task1/src/Route.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tag 2/WordsCount.zip" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2hj4EDmArklprfO0W0DJrnxAa1J" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Node.js.01DatenstrukturMap.js.executor": "Run",
+    "Node.js.02DatenstruktureTupel.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/sophiamoos/Desktop/TBZ - Module/M323 - funktional programmieren/modul323_sophia_moos/05_WeitereDatenstrukturen",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-WS-241.15989.105" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5a2c66bd-cd37-4ddd-8f04-7e1513b5dc95" name="Changes" comment="" />
+      <created>1718094038224</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718094038224</updated>
+      <workItem from="1718094039303" duration="4887000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
