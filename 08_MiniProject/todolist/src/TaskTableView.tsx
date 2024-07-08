@@ -404,7 +404,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
                             <Grid item xs={2}>
                                 <Grid container>
                                     <Grid item xs={12} sx={{mt: "5px"}}>
-                                        <Button variant="contained" startIcon={<DeleteIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#420404", color: "#fff"}} onClick={() => {handleDelete(task)}}>
+                                        <Button variant="contained" startIcon={<DeleteIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#420703", color: "#fff"}} onClick={() => {handleDelete(task)}}>
                                             Delete
                                         </Button>
                                     </Grid>

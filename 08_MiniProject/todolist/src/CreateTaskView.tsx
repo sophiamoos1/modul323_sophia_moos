@@ -12,27 +12,13 @@ import {
     TextField
 } from "@mui/material";
 import {TaskType} from "./TaskType";
-import React from "react";
 import {Priority} from "./Priority";
 import {Status} from "./Status";
 import {Category} from "./Category";
 
-
-
 type CreateTaskViewProps = {
     tasklists: TasklistType[]
     setTasklists: Function
-}
-
-enum ChangedValue {
-    name = "name",
-    description = "description",
-    priority =  "priority",
-    status = "status",
-    category = "category",
-    estimatedWorkingHours = "estimatedWorkingHours",
-    estimatedWorkingDays = "estimatedWorkingDays ",
-    deadline = "deadline"
 }
 
 export default function CreateTaskView({tasklists, setTasklists}: CreateTaskViewProps) {
