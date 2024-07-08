@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import {Status} from "./Status";
 import {Priority} from "./Priority";
 import {Category} from "./Category";
+import { pipe } from 'fp-ts/function';
 
 type TaskTable = {
     tasklists: TasklistType[]
@@ -59,6 +60,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
             setFilteredTasks(tasklists.map(tasklist => tasklist.tasks).flat());
         }
     }, [selectedFilterOptions])
+
 
     const checkForSelectedStatus = (options: FilterOptions[]) => {
         var statusSelected: Status[] = [];
@@ -322,14 +324,62 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
             <Grid container sx={{width: "70vw", ml: "6vw", mr: "6vw", paddingLeft: "1vw"}}>
                 {filteredTasks.map((task: TaskType) => (
                     <Grid item xs={12}>
-                        <Box sx={{bgcolor: "#002452", borderRadius: "15px", mt: "5px", height: "12vh"}}>
+                        <Box sx={{bgcolor: "#002452", borderRadius: "15px", mt: "5px", height: "15vh"}}>
                         <Grid container>
-                            <Grid item xs={3}>
+                            <Grid item xs={5}>
                                 <Typography sx={{fontWeight: 500, fontSize: "16px", pl: "5px", color: "#b2b9c2", pt: "2px"}} align="left">{task.name}</Typography>
                                 <Typography sx={{fontWeight: 300, fontSize: "14px", pl: "5px", color: "#fff", pt: "5px"}} align="left">{task.description ?? ""}</Typography>
+                                <Typography sx={{fontWeight: 500, fontSize: "14px", pl: "5px", color: "#fff", pt: "5px"}} align="left">{"Deadline: " + task.deadline?.toDateString()}</Typography>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <Grid container sx={{mt: "10px"}}>
+                                    <Grid item xs={5}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Status: </Typography>
+                                    </Grid>
+                                    <Grid item xs={7}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", pl: "5px", color: "#fff"}} align="left">{task.status}</Typography>
+                                    </Grid>
+                                    <Grid item xs={5}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Priority: </Typography>
+                                    </Grid>
+                                    <Grid item xs={7}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", pl: "5px", color: "#fff"}} align="left">{task.priority}</Typography>
+                                    </Grid>
+                                    <Grid item xs={5}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Category: </Typography>
+                                    </Grid>
+                                    <Grid item xs={7}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", pl: "5px", color: "#fff"}} align="left">{task.category}</Typography>
+                                    </Grid>
+                                    <Grid item xs={5}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Started on: </Typography>
+                                    </Grid>
+                                    <Grid item xs={7}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", pl: "5px", color: "#fff"}} align="left">{task.startDate?.toDateString() ?? "/"}</Typography>
+                                    </Grid>
+                                    <Grid item xs={5}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Fnished on: </Typography>
+                                    </Grid>
+                                    <Grid item xs={7}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", pl: "5px", color: "#fff"}} align="left">{task.finishDate?.toDateString() ?? "/"}</Typography>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                             <Grid item xs={2}>
-
+                                <Grid container sx={{mt: "10px"}}>
+                                    <Grid item xs={8}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Estimated working-hours: </Typography>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">{task.estimatedWorkingHours ?? "/"}</Typography>
+                                    </Grid>
+                                    <Grid item xs={8}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">Estimated working-days: </Typography>
+                                    </Grid>
+                                    <Grid item xs={4}>
+                                        <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">{task.estimatedWorkingDays ?? "/"}</Typography>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                         </Grid>
                         </Box>
