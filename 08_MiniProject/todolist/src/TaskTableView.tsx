@@ -6,7 +6,9 @@ import Grid from '@mui/material/Grid';
 import {Status} from "./Status";
 import {Priority} from "./Priority";
 import {Category} from "./Category";
-import { pipe } from 'fp-ts/function';
+import { pipe, flow } from 'fp-ts/function';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 type TaskTable = {
     tasklists: TasklistType[]
@@ -123,6 +125,24 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
     React.useEffect(() => {
         setFilteredTasks(tasklists.map(tasklist => tasklist.tasks).flat());
     }, [tasklists]);
+
+    const handleDelete = (selectedTask: TaskType) => {
+        const selectedTasklist = findTasklist(selectedTask)!
+        setTasklists(applyNewTasklist(selectedTasklist, changeTasklist(selectedTask, selectedTasklist)))
+        alert("Deleted Task")
+    }
+
+    const findTasklist = (selectedTask: TaskType) => {
+        return tasklists.find((tasklist) => tasklist.tasks.includes(selectedTask))
+    }
+
+    const changeTasklist = (selectedTask: TaskType, tasklist: TasklistType) => {
+        return {...tasklist, tasks: [...tasklist.tasks.filter(task => task !== selectedTask)]}
+    }
+
+    const applyNewTasklist = (selectedTasklist: TasklistType, changedTasklist: TasklistType) => {
+        return [tasklists.filter(tasklist => tasklist !== selectedTasklist), changedTasklist]
+    }
 
 
     return (
@@ -378,6 +398,20 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
                                     </Grid>
                                     <Grid item xs={4}>
                                         <Typography sx={{fontWeight: 300, fontSize: "14px", color: "#fff"}} align="left">{task.estimatedWorkingDays ?? "/"}</Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                            <Grid item xs={2}>
+                                <Grid container>
+                                    <Grid item xs={12} sx={{mt: "5px"}}>
+                                        <Button variant="contained" startIcon={<DeleteIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#420404", color: "#fff"}} onClick={() => {handleDelete(task)}}>
+                                            Delete
+                                        </Button>
+                                    </Grid>
+                                    <Grid item xs={12} sx={{mt: "5px"}}>
+                                        <Button variant="contained" startIcon={<EditIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#064204", color: "#fff"}}>
+                                            Edit
+                                        </Button>
                                     </Grid>
                                 </Grid>
                             </Grid>
