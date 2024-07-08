@@ -5,6 +5,12 @@ import {PrivateTaskData, SchoolTaskData, WorkTaskData} from "./TaskData";
 export function TasklistData(): TasklistType[] {
     const tasklists: TasklistType[] = [
         {
+            id: "1",
+            name: "Default",
+            createDate: new Date('1999-01-01'),
+            tasks: []
+        },
+        {
             id: "tasklist1",
             name: "School stuff",
             createDate: new Date('2024-03-15'),

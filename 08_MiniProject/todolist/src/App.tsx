@@ -7,6 +7,7 @@ import TasklistTableView from "./TasklistTableView";
 import {TasklistType} from "./TasklistType";
 import {TasklistData} from "./TasklistData";
 import TaskTableView from "./TaskTableView";
+import CreateTaskView from "./CreateTaskView";
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -68,7 +69,7 @@ function App() {
                   <TaskTableView tasklists={tasklists} setTasklists={setTasklists}/>
               </CustomTabPanel>
               <CustomTabPanel value={value} index={2}>
-                  Item Three
+                  <CreateTaskView tasklists={tasklists} setTasklists={setTasklists}/>
               </CustomTabPanel>
           </Box>
       </Box>
