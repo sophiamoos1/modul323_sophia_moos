@@ -141,7 +141,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
     }
 
     const applyNewTasklist = (selectedTasklist: TasklistType, changedTasklist: TasklistType) => {
-        return [tasklists.filter(tasklist => tasklist !== selectedTasklist), changedTasklist]
+        return [...tasklists.filter(tasklist => tasklist !== selectedTasklist), changedTasklist]
     }
 
 
@@ -406,11 +406,6 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
                                     <Grid item xs={12} sx={{mt: "5px"}}>
                                         <Button variant="contained" startIcon={<DeleteIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#420404", color: "#fff"}} onClick={() => {handleDelete(task)}}>
                                             Delete
-                                        </Button>
-                                    </Grid>
-                                    <Grid item xs={12} sx={{mt: "5px"}}>
-                                        <Button variant="contained" startIcon={<EditIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#064204", color: "#fff"}}>
-                                            Edit
                                         </Button>
                                     </Grid>
                                 </Grid>

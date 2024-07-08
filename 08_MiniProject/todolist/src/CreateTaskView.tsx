@@ -36,7 +36,6 @@ enum ChangedValue {
 }
 
 export default function CreateTaskView({tasklists, setTasklists}: CreateTaskViewProps) {
-    const [actualTasklists, setActualTasklists] = useState<TasklistType[]>(tasklists)
     const [newTask, setNewTask] = useState<Omit<TaskType, 'id' | 'startDate' | 'finishDate'>>({
         name: '',
         description: '',
@@ -62,7 +61,6 @@ export default function CreateTaskView({tasklists, setTasklists}: CreateTaskView
             [name]: event.target.value,
         });
     };
-    // React.ChangeEvent<{value: Category | Priority | Status; name: string;}>
 
     const handleSelectChange = (event: SelectChangeEvent, valueName: string) => {
         const name = valueName as keyof typeof newTask;
