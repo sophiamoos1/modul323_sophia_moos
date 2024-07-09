@@ -9,6 +9,7 @@ import {TasklistData} from "./TasklistData";
 import TaskTableView from "./TaskTableView";
 import CreateTaskView from "./CreateTaskView";
 import CreateTasklistView from "./CreateTasklistView";
+import EditTaskView from "./EditTaskView";
 interface TabPanelProps {
     children?: React.ReactNode;
     index: number;
@@ -62,6 +63,7 @@ function App() {
                       <Tab label="Tasks Overview" {...a11yProps(1)} sx={{color: "#ffffff"}}/>
                       <Tab label="Create new Task" {...a11yProps(2)} sx={{color: "#ffffff"}}/>
                       <Tab label="Create new Tasklist" {...a11yProps(3)} sx={{color: "#ffffff"}}/>
+                      <Tab label="Edit Task" {...a11yProps(4)} sx={{color: "#ffffff"}}/>
                   </Tabs>
               </Box>
               <CustomTabPanel value={value} index={0}>
@@ -75,6 +77,9 @@ function App() {
               </CustomTabPanel>
               <CustomTabPanel value={value} index={3}>
                   <CreateTasklistView tasklists={tasklists} setTasklists={setTasklists}/>
+              </CustomTabPanel>
+              <CustomTabPanel value={value} index={4}>
+                  <EditTaskView tasklists={tasklists} setTasklists={setTasklists}/>
               </CustomTabPanel>
           </Box>
       </Box>

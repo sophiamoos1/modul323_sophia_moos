@@ -14,6 +14,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { TasklistType } from './TasklistType';
 import { Status } from "./Status";
+import {pipe} from "fp-ts/function";
 
 type Row = {
     id: string;
@@ -85,6 +86,7 @@ export default function TasklistTableView({ tasklists, setTasklists }: TasklistT
         setFilteredTasklists(newFilteredTasklist);
     }, [filter]);
 
+    //Verwendung von Sortierung
     const sortTasklistsByTaskStatus = (statusToSort: Status): TasklistType[] => {
         return [...tasklists].sort((a, b) => {
             const countA = a.tasks.filter(task => task.status === statusToSort).length;

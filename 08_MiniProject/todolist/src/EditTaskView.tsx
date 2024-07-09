@@ -12,18 +12,9 @@ import {
     SelectChangeEvent,
     TextField
 } from "@mui/material";
-import {set} from "fp-ts";
 import {Priority} from "./Priority";
 import {Status} from "./Status";
 import {Category} from "./Category";
-
-/*
-  <Grid item xs={12} sx={{mt: "5px"}}>
-                                        <Button variant="contained" startIcon={<EditIcon />} sx={{width: "7vw", height: "4vh", bgcolor: "#034208", color: "#fff"}}>
-                                            Delete
-                                        </Button>
-                                    </Grid>
- */
 
 type EditTaskViewProps = {
     tasklists: TasklistType[]
@@ -45,10 +36,13 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
     });
     const [nameOfSelectedTasklist, setNameOfSelectedTasklist] = useState<string>("");
     const [tasklistNames, setTasklistNames] = useState<string[]>([]);
+    const [taskNames, setTaskNames] = useState(tasklists.map(tasklist => tasklist.tasks).flat().map((task) => task.name))
 
+    // useEffect verwendet eine Pipeline, um die Aufgaben- und Listen-Namen zu setzen.
     useEffect(() => {
         setTasks(tasklists.map(tasklist => tasklist.tasks).flat())
         setTasklistNames(tasklists.map((task) => task.name))
+        setTaskNames(tasklists.map(tasklist => tasklist.tasks).flat().map((task) => task.name))
     }, [tasklists])
 
     useEffect(() => {
@@ -57,6 +51,7 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
         }
     }, [taskIsSelected])
 
+    // Higher-Order-Function: handleChange ist eine Funktion, die eine andere Funktion (setNewTask) aufruft.
     const handleChange = (event: React.ChangeEvent<{ name?: string; value: unknown }>) => {
         const name = event.target.name as keyof typeof newTask;
         setNewTask({
@@ -65,6 +60,7 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
         });
     };
 
+    // Higher-Order-Function: handleSelectChange ist eine Funktion, die eine andere Funktion (setNewTask) aufruft.
     const handleSelectChange = (event: SelectChangeEvent, valueName: string) => {
         const name = valueName as keyof typeof newTask;
         setNewTask({
@@ -73,9 +69,26 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
         });
     }
 
-     const handleSelectedTaskChange = (event: SelectChangeEvent, selectedTask: TaskType) => {
+    // Higher-Order-Function: handleSelectedTaskChange ist eine Funktion, die eine andere Funktion (setTaskIsSelected) aufruft.
+     const handleSelectedTaskChange = (event: SelectChangeEvent) => {
+         const selectedTask = findTask(0, event.target.value) ?? tasks[0]
         setTaskIsSelected([true, selectedTask])
      }
+
+    // Rekursive Funktion zum Finden einer Aufgabe anhand ihres Namens
+    const findTask = (taskListIndex: number, taskName: string): TaskType | undefined => {
+        if(tasklists[taskListIndex]) {
+            const thisTaskList = tasklists[taskListIndex]
+            for (let task of thisTaskList.tasks) {
+                if (task.name === taskName) {
+                    return task;
+                }
+            }
+            return findTask(taskListIndex + 1, taskName)
+        } else {
+            return undefined;
+        }
+    }
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
@@ -89,10 +102,13 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
             category: newTask.category,
             estimatedWorkingHours: newTask.estimatedWorkingHours,
             estimatedWorkingDays: newTask.estimatedWorkingDays,
+            startDate: newTask.status === Status.started ? taskIsSelected[1]!.status === Status.started ? new Date() : undefined : undefined,
+            finishDate: newTask.status === Status.complete ? taskIsSelected[1]!.status !== Status.complete ? new Date() : undefined : undefined,
             deadline: newTask.deadline,
         }
+        // immutable Daten: setTasklists erzeugt eine neue Liste von Tasklists.
         setTasklists([...tasklists.filter(tasklist => tasklist.id !== selectedTasklist.id), {...selectedTasklist, tasks: [...selectedTasklist.tasks.filter(task => task !== taskIsSelected[1]!), createdTask]}])
-        alert('Created new Task')
+        alert('Edited Task')
         console.log(newTask);
     };
 
@@ -100,6 +116,22 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
         <Box>
             <Box sx={{width: "46vw", ml: "20vw", mr: "20vw", borderRadius: "15px", bgcolor: "#a5cbfa"}}>
                 <form onSubmit={handleSubmit}>
+                    <FormControl margin="normal" sx={{width: "20vw", mr: "3vw"}}>
+                        <InputLabel>Edit Task</InputLabel>
+                        <Select
+                            required
+                            name="task"
+                            value={taskIsSelected[1]?.id ?? ""}
+                            onChange={(event) => handleSelectedTaskChange(event)}
+                        >
+                            {Object.values(taskNames).map((name) => (
+                                <MenuItem key={name} value={name}>
+                                    {name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                        <FormHelperText>Task to edit</FormHelperText>
+                    </FormControl>
                     <TextField
                         label="Name"
                         name="name"
@@ -107,17 +139,17 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
                         onChange={handleChange}
                         required
                         margin="normal"
-                        sx={{width: "20vw", mr: "3vw"}}
+                        sx={{width: "20vw"}}
                     />
                     <TextField
                         label="Description"
                         name="description"
                         value={newTask.description}
                         onChange={handleChange}
-                        sx={{width: "20vw"}}
+                        sx={{width: "20vw", mr: "3vw"}}
                         margin="normal"
                     />
-                    <FormControl margin="normal" sx={{width: "20vw", mr: "3vw"}}>
+                    <FormControl margin="normal" sx={{width: "20vw"}}>
                         <InputLabel>Tasklist</InputLabel>
                         <Select
                             required
@@ -133,7 +165,7 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
                         </Select>
                         <FormHelperText>Taskliste auswählen</FormHelperText>
                     </FormControl>
-                    <FormControl margin={"normal"} sx={{width: "20vw"}}>
+                    <FormControl margin={"normal"} sx={{width: "20vw", mr: "3vw"}}>
                         <InputLabel>Priority</InputLabel>
                         <Select
                             name="priority"
@@ -148,7 +180,7 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
                         </Select>
                         <FormHelperText>Priorität auswählen</FormHelperText>
                     </FormControl>
-                    <FormControl margin="normal" sx={{width: "20vw", mr: "3vw"}}>
+                    <FormControl margin="normal" sx={{width: "20vw"}}>
                         <InputLabel>Category</InputLabel>
                         <Select
                             name="category"
@@ -158,6 +190,21 @@ export default function EditTaskView({tasklists, setTasklists}: EditTaskViewProp
                             {Object.values(Category).map((category) => (
                                 <MenuItem key={category} value={category}>
                                     {category}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                        <FormHelperText>Kategorie auswählen</FormHelperText>
+                    </FormControl>
+                    <FormControl margin="normal" sx={{width: "20vw", mr: "3vw"}}>
+                        <InputLabel>Status</InputLabel>
+                        <Select
+                            name="status"
+                            value={newTask.status}
+                            onChange={(event) => handleSelectChange(event, "status")}
+                        >
+                            {Object.values(Status).map((status) => (
+                                <MenuItem key={status} value={status}>
+                                    {status}
                                 </MenuItem>
                             ))}
                         </Select>

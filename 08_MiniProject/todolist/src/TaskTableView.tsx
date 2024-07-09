@@ -6,8 +6,6 @@ import Grid from '@mui/material/Grid';
 import {Status} from "./Status";
 import {Priority} from "./Priority";
 import {Category} from "./Category";
-import { pipe, flow } from 'fp-ts/function';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 type TaskTable = {
@@ -44,6 +42,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
         }
     };
 
+    // useEffect verwendet eine Pipeline, um die Filter zu aktualisieren.
     useEffect(() => {
         const tasks = tasklists.map(tasklist => tasklist.tasks).flat()
         const statusState = checkForSelectedStatus(selectedFilterOptions)
@@ -64,6 +63,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
     }, [selectedFilterOptions])
 
 
+    // Pure Function: checkForSelectedStatus ist rein und abhängig nur von seinen Eingaben.
     const checkForSelectedStatus = (options: FilterOptions[]) => {
         var statusSelected: Status[] = [];
         if (options.includes(FilterOptions.todoStatus)) {
@@ -78,6 +78,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
         return statusSelected
     }
 
+    // Pure Function: checkForSelectedPriority ist rein.
     const checkForSelectedPriority = (options: FilterOptions[]) => {
         var prioritySelected: Priority[] = [];
         if (options.includes(FilterOptions.lowPriority)) {
@@ -92,6 +93,7 @@ export default function TaskTableView({tasklists, setTasklists}: TaskTable) {
         return prioritySelected
     }
 
+    // Pure Function: checkForSelectedCategory ist rein.
     const checkForSelectedCategory = (options: FilterOptions[]) => {
         var categorySelected: Category[] = [];
         if (options.includes(FilterOptions.workCategory)) {
